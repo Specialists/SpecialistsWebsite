@@ -1,0 +1,11 @@
+Options +FollowSymLinks
+RewriteEngine On
+
+RewriteBase /
+
+RewriteCond %{HTTP_HOST} ^www\.DOMAIN\.com [NC]
+RewriteRule ^(.*)$ http://DOMAIN.com/$1 [L,R=301]
+
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteRule (.*) index.php?query=$1 [QSA,L]
